@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <title>Test Vocabulaire - Menu Central</title>
+
+        
+
+    </head>
+
+    <script type="text/javascript" src="Main. js"></script>
+    <body>
+
+
+        <div id="bordure">
+            <img src="assets/image_titre.png">
+            <a  id="texte">Bienvenue sur Vocabulary Test ! Ici vous pouvez tester vos connaissance en vocabulaire en anglais. Différents thèmes sont proposés sous forme de fiches. Vous pouvez même créer votre propre fiche !</a>
+            <br>
+
+            <div id="grid">
+
+                <div id="milieu">
+
+                
+                    <button id="boutonSeTester" class="bouton couleur centrage" onclick="document.location.href='voc_seTester.html'//redirection html">Se tester</button>
+                    
+                    <button id="boutonReviser" class="bouton couleur centrage" onclick="document.location.href='voc_reviser.html'" >Réviser</button>
+                
+                
+                
+
+                
+                    <button id="boutonTelecharger" class="bouton couleur centrage" onclick="download('test.txt', 'Hello world!');">Télécharger</button>
+                    
+                    <button id="boutonAide" class="bouton couleur centrage" onclick="document.location.href='voc_aide.html'" >Aide</button>
+                </div>
+            </div>
+
+
+        </div>
+        
+
+        <script>
+
+
+
+            function download(filename, text) {
+
+
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+
+                element.style.display = 'none';
+                document.body.appendChild(element);
+
+                element.click();
+
+                document.body.removeChild(element);
+            }
+
+
+        </script>
+
+        <style>
+            body, #grid{
+                display: grid; 
+                grid-template-columns: 1fr 2fr 1fr;
+
+            }
+            #grid{
+                padding: 50px;
+            }
+            #bordure{
+                grid-column: 2/3;
+                margin-top: 5%;
+                display: grid;
+            }
+            #milieu{  
+                grid-column: 2;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .centrage{
+                margin: 0 auto;
+            }
+            img{
+                margin: 0 auto;
+                width: 30%;
+                height: auto;
+            }
+            #texte{
+                font-size: 16px;
+                color: white;
+                margin-left: 20%;
+                margin-right: 20%;
+            }
+        </style>        
+
+    </body>
+
+
+</html>

@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html>
+
+
+<head>
+  <meta charset="ISO-8859-1">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <title>Test Vocabulaire - S'entrainer</title>
+</head>
+
+
+<body>
+
+  <br>
+  <button id="boutonQuitter" class="bouton couleur" onclick="javascript:document.location.href='voc_menuCentral.html'" >Retour</button>
+  <br>
+
+  <label for="decodeur" id="champUpload"> 
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+      <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path>
+    </svg>  Choisissez la fiche sur laquelle s'entrainer... </label>
+  <br> 
+  <p>
+     <i>Pas de fiche ? Consultez <a href="voc_aide.html">l'aide</a></i> 
+  </p>
+  <br>
+  <br>
+  <input type="file" id="decodeur" onchange = "lireFichier(event)" style="opacity: 0;height: 0.1px;" disabled>
+  
+
+    
+  <div id="bordure">
+  
+    
+    <div id="zoneInterfaceResultat">
+      <p id='consigne' class="ligneQuestion" >Traduisez:</p>
+      <p id='question' class="ligneQuestion" >Question ?</p>
+    </div>
+
+    <br>
+
+    <input id="champReponse" type="text" onkeypress="valider()" value="" size="30" placeholder="Saisissez votre réponse..."> 
+    
+
+    <br>
+
+    <button id='boutonValider' class="bouton couleur" onclick="recevoirReponse();">Valider </button>
+  </div>
+  <br>
+
+  <br>
+  <br>
+
+  <style>
+    #bordure{
+      width: 80%;
+      margin: 0 auto;
+      opacity: 0;
+    }
+    
+  </style>
+
+
+
+  <script id='poseQuestion'>
+
+
+    //Activer le décodeur et desactiver la partie test
+    decodeur.disabled = false
+    bordure.style.disabled = true
+
+    //Générer un nombre au hasard
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    } 
+
+    //Déclaration des variables
+    let aRevoir1 = []
+    let aRevoir2 = []
+    let L1 = ['manger']
+    let L2 = ['eat']
+    let k = 0
+    
+
+    //Fonction de lecture d'un fichier texte
+    function lireFichier(evt) {
+
+      //Eviter les bugs ??  
+      evt.stopPropagation();
+      evt.preventDefault();
+
+      //Faire apparaitre le test
+      var bordure = document.getElementById('bordure')
+      bordure.style.opacity = 1
+      bordure.style.disabled = false
+
+      //Désactiver le champUpload
+      var decodeur = document.getElementById('decodeur')
+      decodeur.style.opacity = 0
+      decodeur.disabled = true
+      var champUpload = document.getElementById('champUpload')
+      champUpload.style.opacity = 0
+      champUpload.style.cursor = "default"
+      
+      
+
+      // FileList object.
+      var files = evt.target.files;
+
+      var file = files[0];
+
+      var fileReader = new FileReader();
+
+      // Initalisation
+      fileReader.onloadstart = function(progressEvent) {
+        L1=[]
+        L2=[]
+      }
+
+
+      // Lecture du ficher en cours
+      fileReader.onload = function(progressEvent) {
+        
+
+
+
+        // fichier entier en 1 string 
+        var stringData = fileReader.result;
+
+
+        //fichier par ligne
+        var arrayData = stringData.split("\n")
+
+        
+        var n = arrayData.length
+        //stringData = stringData.replace(/\n/g,'<br>')           //remplacer plusieurs fois --> /g = global  | = or
+
+
+        var mots = []
+        var lignes = ''
+
+        var prop2 = []
+        var prop3 = []
+
+        for (var i=0; i<(n+1); i++){
+            
+            lignes = arrayData[i]
+            mots = lignes.split(":")
+            L1.push(mots[0])
+
+            propositions = mots[1].split(',')
+            L2.push(propositions[0])
+            if (propositions[1] == undefined){
+              prop2.push('')
+            }
+            else{
+              prop2.push(propositions[1])
+
+              if (propositions[2] == undefined){
+                prop3.push('')
+              }
+              else{
+                prop3.push(propositions[2])
+              }
+
+            }
+              
+        }   
+          
+      
+      }
+
+      fileReader.onloadend = function(progressEvent) {
+          // FileReader.EMPTY, FileReader.LOADING, FileReader.DONE
+
+          if(fileReader.readyState === 2){
+            var question = document.getElementById('question')
+            newQuestion(question)
+            
+          }     
+          
+      }
+
+      fileReader.onerror = function(progressEvent) {
+      }
+
+    // Read file asynchronously.
+    fileReader.readAsText(file, "ISO-8859-1"); // fileReader.result -> String.
+    
+    }
+    
+
+    
+
+
+    function newQuestion(question){
+      k=getRandomInt(L1.length - 1)
+      question.innerHTML = L1[k]
+      document.getElementById('champReponse').value = ''
+      
+      
+      //Si c'était le dernier mot , donc le test est terminé:
+      if (L1[k] === undefined){
+        question.innerHTML = 'Le test est terminé, cliquez '+'<a id="lienTelechargement" href="">ici</a>' + ' pour télécharger le vocabulaire à revoir'
+        document.getElementById('consigne').textContent = "";
+        document.getElementById('zoneInterfaceResultat').className = ""
+        document.getElementById('champReponse').value = '' //Vider le champ réponse
+        
+
+        //Remplissage du contenu du document .txt pour le téléchargement des mots à revoir
+
+        var text = ""
+        var n = aRevoir2.length
+        for(var i=0; i<n-1; i++){
+          text += aRevoir1[i]+":"+aRevoir2[i]+"\n"
+        }
+        text+= aRevoir1[n-1]+":"+aRevoir2[n-1]
+
+        var d = new Date()
+        var jour = String(d.getDate())
+        var mois = String(d.getMonth()+1)
+        var annee = String(d.getFullYear())
+
+        var element = document.getElementById('lienTelechargement');
+        element.setAttribute('href', 'data:text/plain;charset=ISO-8859-1",' + encodeURIComponent(text));
+        element.setAttribute('download', 'Vocabulaire à revoir du ' + jour + '∕' + mois + '∕' + annee)
+
+      }
+    }
+
+
+    function formater(texte){
+      texte = texte.replace(/\s+/g, ' ')
+      texte = texte.toLowerCase()
+      texte = texte.split(' ').join('')
+      return texte
+    }
+
+    function recevoirReponse(){
+      // recevoir la valeur du champ de saisie = le texte dedans
+      var reponse = document.getElementById('champReponse').value
+      //éviter les merdes et différences d'encodage
+      reponse = formater(reponse)
+     
+     
+      var reponseVoulue1 = formater(L2[k])
+      var reponseVoulue2 = formater(prop2)
+      var reponseVoulue3 = formater(prop3)
+      
+
+      var zoneInterfaceResultat = document.getElementById('zoneInterfaceResultat')
+      var consigne = document.getElementById('consigne')
+      var question = document.getElementById('question')
+      
+      //Reset le signe coloré de validation du resultat et pour pouvoir shake si réponse fausse
+      document.getElementById('zoneInterfaceResultat').className = '' 
+
+
+
+      //si rien n'est répondu
+      if (reponse === ""){
+        consigne.innerHTML = "Traduisez"
+        newQuestion(question)
+        
+      }
+      //si réponse juste
+      else if(reponse == reponseVoulue1 || reponse == reponseVoulue2 || reponse == reponseVoulue3) {
+        L1.splice(k,1)
+        L2.splice(k,1)
+        newQuestion(question)
+        zoneInterfaceResultat.className += " reponseJuste" 
+      }
+
+      // si réponse fausse
+      else{
+        //ajout du mot à la liste des mots à revoir si le mot est pas déjà dedans (si utilisateur se trompe plusieurs fois)
+        if(aRevoir1)
+        aRevoir1.push(L1[k])
+        var ligne = L2[k]
+        if(prop2 != ''){
+          ligne += ','+prop2
+          if(prop3 != ''){
+            ligne += ','+prop3
+          }
+        }
+        aRevoir2.push(ligne)
+      
+        //Vider le champ réponse
+        document.getElementById('champReponse').value = '' 
+        
+        //retour de la correction à l'utilisateur
+        
+        question.innerHTML = "Faux !"+"<br>"+ "Les réponses possibles étaient: "+ ligne +"<br>"+ "<i style='font-size: 14px; color: rgb(26, 27, 31);'>Pour continuer, appuyez sur valider</i>"
+        consigne.innerHTML = ""
+        zoneInterfaceResultat.className += " reponseFausse shake"
+      }
+
+    }
+
+  
+    function valider(){
+      if(event.keyCode===13){
+        //Vérifier que l'on a appuyé sur entrer
+        recevoirReponse()
+      }
+
+    }
+  
+
+
+    
+
+
+    
+
+  </script>
+</body>
+
+</html>
