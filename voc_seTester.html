@@ -80,6 +80,10 @@
     let aRevoir2 = []
     let L1 = ['manger']
     let L2 = ['eat']
+    var prop2 = []
+    var prop3 = []
+
+
     let k = 0
     
 
@@ -140,8 +144,7 @@
         var mots = []
         var lignes = ''
 
-        var prop2 = []
-        var prop3 = []
+        
 
         for (var i=0; i<(n+1); i++){
             
@@ -151,8 +154,10 @@
 
             propositions = mots[1].split(',')
             L2.push(propositions[0])
+            
             if (propositions[1] == undefined){
               prop2.push('')
+              prop3.push('')
             }
             else{
               prop2.push(propositions[1])
@@ -165,6 +170,7 @@
               }
 
             }
+            
               
         }   
           
@@ -231,6 +237,9 @@
 
 
     function formater(texte){
+      if(texte == ''){
+        return ''
+      }
       texte = texte.replace(/\s+/g, ' ')
       texte = texte.toLowerCase()
       texte = texte.split(' ').join('')
@@ -242,12 +251,13 @@
       var reponse = document.getElementById('champReponse').value
       //éviter les merdes et différences d'encodage
       reponse = formater(reponse)
+      
      
      
       var reponseVoulue1 = formater(L2[k])
-      var reponseVoulue2 = formater(prop2)
-      var reponseVoulue3 = formater(prop3)
       
+      var reponseVoulue2 = formater(prop2[k])
+      var reponseVoulue3 = formater(prop3[k])
 
       var zoneInterfaceResultat = document.getElementById('zoneInterfaceResultat')
       var consigne = document.getElementById('consigne')
@@ -265,7 +275,7 @@
         
       }
       //si réponse juste
-      else if(reponse == reponseVoulue1 || reponse == reponseVoulue2 || reponse == reponseVoulue3) {
+      else if(reponse == reponseVoulue1){// || reponse == reponseVoulue2 || reponse == reponseVoulue3) {
         L1.splice(k,1)
         L2.splice(k,1)
         newQuestion(question)
@@ -278,10 +288,10 @@
         if(aRevoir1)
         aRevoir1.push(L1[k])
         var ligne = L2[k]
-        if(prop2 != ''){
+        if(prop2[k] != ''){
           ligne += ','+prop2
-          if(prop3 != ''){
-            ligne += ','+prop3
+          if(prop3[k] != ''){
+            ligne += ','+prop3[k]
           }
         }
         aRevoir2.push(ligne)
