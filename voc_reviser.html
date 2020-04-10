@@ -4,221 +4,44 @@
     <meta charset="UTF-8">
     <title>Test Vocabulaire - Réviser</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
 </head>
-<body>
+
+
+<script>
+
+
+    //------------------------- Loading screen ----------------------
+
+    function onReady(callback) {
+        var intervalId = window.setInterval(function() {
+            if (document.getElementsByTagName('body')[0] !== undefined) {
+                window.clearInterval(intervalId);
+                callback.call(this);
+            }
+        }, 1000);
+    }
+
+    function setVisible(id, visible) {
+        document.querySelector(id).style.display = visible ? 'block' : 'none';
+    }
+
+    onReady(function() {
+        setVisible('.page', true);
+        setVisible('#loading', false);
+    });
+
+
+</script>
+
+<style>
     
-    <button id="boutonQuitter" class="bouton couleur" onclick="javascript:document.location.href='index.html'" >Retour</button>
-    <div id='bordure'>
-        <h1>Reviser</h1>
-        <br>
-        <p>
-            Voici une proposition de liste de fiches pour réviser, classée par thèmes abordés.
-            <br>
-            Chaque case redirige vers un pdf d'étude, suivi d'un lien cliquable pour les télécharger au format adapté afin de les utiliser dans l'onglet "Se Tester".
-            <br>
-            Bonnes révisions !
-        </p>
+    /* Loading screen animation ------------------------------*/
 
-
-        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-
-
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Climate Change</h4> 
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/221012/pexels-photo-221012.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Climate change">
-            <img src="https://images.pexels.com/photos/221012/pexels-photo-221012.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Climate change">
-                
-        </div>
-
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Computer Science</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Computer Science">
-            <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Crime</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/923681/pexels-photo-923681.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Crime">
-            <img src="https://images.pexels.com/photos/923681/pexels-photo-923681.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Democracy</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/2978019/pexels-photo-2978019.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Democracy">
-            <img src="https://images.pexels.com/photos/2978019/pexels-photo-2978019.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Eating Disorder</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Eating Disorder">
-            <img src="https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Energy</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/1108814/pexels-photo-1108814.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Energy">
-            <img src="https://images.pexels.com/photos/1108814/pexels-photo-1108814.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>English</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="English">
-            <img src="https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Euthanasia</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Euthanasia">
-            <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Fame</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/53453/marilyn-monroe-woman-actress-pretty-53453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-            <img src="https://images.pexels.com/photos/53453/marilyn-monroe-woman-actress-pretty-53453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Immigration</h4>
-            </div>
-            <img class="glass-effect" src="https://i.pinimg.com/originals/9c/c6/8f/9cc68f8a5800c47a93fbaf5c296a8b3a.jpg" alt=" ">
-            <img src="https://i.pinimg.com/originals/9c/c6/8f/9cc68f8a5800c47a93fbaf5c296a8b3a.jpg" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Guns</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/34552/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-            <img src="https://images.pexels.com/photos/34552/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Health Issues</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/42230/teddy-teddy-bear-association-ill-42230.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-            <img src="https://images.pexels.com/photos/42230/teddy-teddy-bear-association-ill-42230.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Illegal Drugs</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/3536257/pexels-photo-3536257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-            <img src="https://images.pexels.com/photos/3536257/pexels-photo-3536257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Globalization</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/599982/pexels-photo-599982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-            <img src="https://images.pexels.com/photos/599982/pexels-photo-599982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>Individual Freedom</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/372098/pexels-photo-372098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-            <img src="https://images.pexels.com/photos/372098/pexels-photo-372098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-        <div class="conteneurImg">
-            <div class="text-block">
-                <h4>International</h4>
-            </div>
-            <img class="glass-effect" src="https://images.pexels.com/photos/414916/pexels-photo-414916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-            <img src="https://images.pexels.com/photos/414916/pexels-photo-414916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
-        </div>
-
-
-
-        <!--<iframe src="https://docs.google.com/gview?url=http://anglaiscpge.free.fr/fiches-voc/abortion.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>-->
-    </div>
-
-    <style>
-        html{
-            overflow-y: scroll;
-        }
-        #bordure{
-            display: inline-block;
-            margin-top: 5%; 
-            width:80%;
-            
-        }
-        p{
-            margin-left: 10%;
-            margin-right: 10%;
-        }
-        #grid{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 50px;
-        }
-        .conteneurImg{
-            position: relative;
-            cursor: pointer;
-            max-width: 15%;
-            display: inline-block;
-            margin-right: 3%;
-            margin-left: 3%;
-            margin-bottom: 20px;
-            margin-top: 20px;
-        }
-        .conteneurImg:hover > .text-block{
-            color: white;
-        }
-        
-        .text-block {
-            z-index: 2;
-            position: absolute;
-            top: 83%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            width: 100%;
-        }
-        h4{
-            width: 100%;
-            height: auto;
-        }
-        img{
-            z-index: 0;
-            margin: 0 auto; 
-            max-width: 100%;
-            border: solid 0px;
-            border-radius: 5px;
-            box-shadow: 5px 5px 5px black;
-        }
-        .glass-effect{
-            z-index: 1;
-            position: absolute;
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            filter: blur(15px);
-            clip-path: inset(70% 0 0 0);
-            
-        }
-
-
-
-
-
-
-
-
-        .lds-ellipsis {
+    .lds-ellipsis {
         display: inline-block;
         position: relative;
         width: 80px;
@@ -272,6 +95,199 @@
         100% {
             transform: translate(24px, 0);
         }
+        }
+        .page{
+            display: none;
+        }
+</style>
+
+
+
+
+<body>
+    
+    <button id="boutonQuitter" class="bouton couleur" onclick="javascript:document.location.href='index.html'" >Retour</button>
+    <div id='bordure'>
+
+        
+        
+        <h1>REVISER</h1>
+        <br>
+        <p>
+            Voici une proposition de liste de fiches pour réviser, classée par thèmes abordés.
+            Chaque image redirige vers un pdf d'étude. Pour les télécharger au format adapté afin de les utiliser dans l'onglet "Se Tester", cliquez sur le titre.
+            Bonnes révisions !
+        </p>
+        <div id="loading" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        <div class="page">
+            <div class="conteneurImg">
+                <h3>Climate Change</h3> 
+                
+                <a href="http://anglaiscpge.free.fr/fiches-vocab/climate-change.pdf">
+                    <img src="https://images.pexels.com/photos/221012/pexels-photo-221012.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Climate change">
+                </a>
+    
+            </div>
+    
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Computer Science</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+    
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Crime</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/923681/pexels-photo-923681.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Democracy</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/2978019/pexels-photo-2978019.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Eating Disorder</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Energy</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/1108814/pexels-photo-1108814.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>English</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Euthanasia</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Fame</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/53453/marilyn-monroe-woman-actress-pretty-53453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Immigration</h3>
+                </div>
+                <img src="https://i.pinimg.com/originals/9c/c6/8f/9cc68f8a5800c47a93fbaf5c296a8b3a.jpg" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Guns</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/34552/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Health Issues</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/42230/teddy-teddy-bear-association-ill-42230.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Illegal Drugs</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/3536257/pexels-photo-3536257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Globalization</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/599982/pexels-photo-599982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>Individual Freedom</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/372098/pexels-photo-372098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+            <div class="conteneurImg">
+                <div class="text-block">
+                    <h3>International</h3>
+                </div>
+                <img src="https://images.pexels.com/photos/414916/pexels-photo-414916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" ">
+            </div>
+        </div>
+        
+
+
+
+        <!--<iframe src="https://docs.google.com/gview?url=http://anglaiscpge.free.fr/fiches-voc/abortion.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>-->
+    </div>
+
+
+
+
+    <style>
+        html{
+            overflow-y: scroll;
+        }
+        #bordure{
+            display: inline-block;
+            margin-top: 5%; 
+            width:80%;
+            
+        }
+        
+        h1{
+            color: #3cf;
+            font-family: Montserrat;
+            font-size: 2em;
+        }
+
+        p{
+            font-family: 'Source Serif Pro',serif;
+            font-size: 1.2em;
+            line-height: 1.3em;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        #grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 50px;
+        }
+
+        .conteneurImg{
+            position: relative;
+            max-width: 15%;
+            display: inline-block;
+            margin-right: 3%;
+            margin-left: 3%;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        
+        }
+        
+        h3{
+            cursor: pointer;
+            color:white;
+            width: 100%;
+            font-family: 'Source Serif Pro',serif;
+            letter-spacing: 1px;
+        }
+        
+        img{
+            cursor: pointer;
+            margin: 0 auto; 
+            max-width: 100%;
+            border: solid 0px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px black;
         }
 
 

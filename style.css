@@ -1,11 +1,9 @@
-HTML{
-    overflow: hidden;
-}
+
 body{   
     
     cursor: default;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Source Serif Pro',serif;
     color: white;
     background-image: url(https://www.supremo.co.uk/typeterms/images/background.jpg);
     
@@ -166,13 +164,6 @@ a{
 @keyframes aniBordure{
     to{border-color: white;}
 }
-
-
-
-
-
-
-
 
 
 
